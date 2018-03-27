@@ -1,6 +1,10 @@
   (require 'package)
   (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
   (package-initialize)
+  (require 'auto-complete)
+  (require 'auto-complete-auctex)
+  (global-auto-complete-mode t)
+  (require 'reftex)
 
   (require 'evil)
   (evil-mode 1)
@@ -27,8 +31,6 @@
 (add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
 (add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
 (add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode))
-
-(require 'auto-complete-auctex)
 
 
 (custom-set-variables
