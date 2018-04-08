@@ -41,6 +41,10 @@
     (unless (package-installed-p package)
       (package-install package)))
 
+(require 'org)
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

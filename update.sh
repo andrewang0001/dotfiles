@@ -19,5 +19,5 @@ wget $(MSTT) && dnf install -y $(MSTT)
 
 ## Stuff to install ...
 dnf install -y keepassxc fuse-exfat clementine sqlite wget cabextract aspell emacs vim-enhanced texlive-scheme-full
-dnf install -y gstreamer-plugin-bad gstreamer-plugin-ugly 
+dnf install -y gstreamer-plugin-bad gstreamer-plugin-ugly R-base gcc-c++ gcc-fortran
 dnf install -y "mozilla-fira*"
