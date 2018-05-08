@@ -40,7 +40,7 @@
   (dolist (package package-list)
     (unless (package-installed-p package)
       (package-install package)))
-
+(setq org-src-fontify-natively t)
 (require 'org)
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
