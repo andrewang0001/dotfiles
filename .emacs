@@ -46,6 +46,20 @@
 (setq-default fill-column 80)
 
 (setq org-src-tab-acts-natively t)
+  ;; Automagically install packages :-)
+  (setq package-list '(evil auctex auto-complete auto-complete-auctex ess base16-theme))
+  (unless package-archive-contents
+    (package-refresh-contents))
+  (dolist (package package-list)
+    (unless (package-installed-p package)
+      (package-install package)))
+(setq org-src-fontify-natively t)
+(require 'org)
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
+
+>>>>>>> a9809ad9a1e3d9a867c8d32306dc90e189a65fc6
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
