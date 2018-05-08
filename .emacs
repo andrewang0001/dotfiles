@@ -59,7 +59,6 @@
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
 
->>>>>>> a9809ad9a1e3d9a867c8d32306dc90e189a65fc6
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
