@@ -7,6 +7,6 @@ set softtabstop=2
 set shiftwidth=2
 
 syntax on
-
 set showmatch
 set wildmenu
+colorscheme slate
