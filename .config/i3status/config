@@ -1,0 +1,26 @@
+general {
+  output_format = "i3bar"
+  colors = true
+  interval = 5
+}
+
+order += "ethernet _first_"
+order += "volume master"
+order += "tztime local"
+
+ethernet _first_ {
+  format_up = "Connected at %ip (%speed)."
+  format_down = "Ethernet offline."
+} 
+
+tztime local {
+  format = "%Y-%m-%d %H:%M"
+} 
+
+volume master {
+  format = "Volume: %volume"
+  format_muted = "Volume: muted."
+  device = "default"
+  mixer = "Master"
+  mixer_idx = 0
+}
