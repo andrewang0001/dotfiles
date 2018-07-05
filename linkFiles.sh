@@ -6,7 +6,7 @@ CMD="$1"
 this_dir=$(pwd)
 GLOBIGNORE=".:.."
 dotfiles=(.emacs .vimrc .Xdefaults)
-dotfiles_config=(i3 i3status)
+dotfiles_config=(i3 i3status dunst)
 
 install() {
 
