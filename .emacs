@@ -6,8 +6,14 @@
   (global-auto-complete-mode t)
   (require 'reftex)
 
-  (require 'evil)
-  (evil-mode 1)
+; (require 'evil)
+; (evil-mode 1)
+
+  (require 'ergoemacs-mode)
+  (require 'ergoemacs-status)
+  (setq ergoemacs-theme nil)
+  (setq ergoemacs-keyboard-layout "us")
+  (ergoemacs-mode 1)
 
   (setq TeX-auto-save t)
   (setq TeX-parse-self t)
