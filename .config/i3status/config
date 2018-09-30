@@ -1,6 +1,7 @@
 general {
   output_format = "i3bar"
-  colors = true
+  colors = false
+  markup = pango
   interval = 5
 }
 
@@ -14,12 +15,13 @@ ethernet _first_ {
 } 
 
 tztime local {
-  format = "%Y-%m-%d %H:%M"
+  format = "%time"
+  format_time = "%a %-d %b %H:%M"
 } 
 
 volume master {
   format = "Volume: %volume"
-  format_muted = "Volume: muted."
+  format_muted = "Volume: MUTED"
   device = "default"
   mixer = "Master"
   mixer_idx = 0
