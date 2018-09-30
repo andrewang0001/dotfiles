@@ -4,22 +4,11 @@
 # Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
 #
-set $base00 #1d1f21
-set $base01 #282a2e
-set $base02 #373b41
-set $base03 #969896
-set $base04 #b4b7b4
-set $base05 #c5c8c6
-set $base06 #e0e0e0
-set $base07 #ffffff
-set $base08 #cc6666
-set $base09 #de935f
-set $base0A #f0c674
-set $base0B #b5bd68
-set $base0C #8abeb7
-set $base0D #81a2be
-set $base0E #b294bb
-set $base0F #a3685a
+set $bg-color #31363b
+set $inactive-bg-color #31363b
+set $text-color #eff0f1
+set $inactive-text-color #7f8c8d
+set $urgent-bg-color #3daee9
 
 # i3 config file (v4)
 #
@@ -30,7 +19,8 @@ set $mod Mod4
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 #font pango:DejaVu Sans Mono 9
-font pango:Source Code Pro, DejaVu Sans Mono 10
+#font pango:Source Code Pro, DejaVu Sans Mono 10
+font pango:Sans Serif 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -58,7 +48,8 @@ bindsym $mod+Shift+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop \
+  --dmenu="dmenu -i -fn 'Sans Serif' -nb '$bg-color' -nf '$text-color' -sb '$urgent-bg-color'"
 
 # change focus
 bindsym $mod+h focus left
@@ -196,40 +187,52 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+       status_command i3status
         position top
         
     colors {
-        background $base00
-        separator  $base01
-        statusline $base04
+        background $bg-color
+        separator  $inactive-text-color
+        statusline $text-color
 
         # State             Border  BG      Text
-        focused_workspace   $base05 $base0D $base00
-        active_workspace    $base05 $base03 $base00
-        inactive_workspace  $base03 $base01 $base05
-        urgent_workspace    $base08 $base08 $base00
-        binding_mode        $base00 $base0A $base00
+        focused_workspace   $urgent-bg-color $urgent-bg-color $text-color
+        active_workspace    $inactive-bg-color $inactive-bg-color $inactive-text-color
+        inactive_workspace  $inactive-bg-color $inactive-bg-color $inactive-text-color
+        urgent_workspace    $urgent-bg-color $urgent-bg-color $text-color
+        binding_mode        $base00 $base0A $text-color
     }
 }
 
 # Basic color configuration using the Base16 variables for windows and borders.
-# Property Name         Border  BG      Text    Indicator Child Border
-client.focused          $base05 $base0D $base00 $base0D $base0D
-client.focused_inactive $base01 $base01 $base05 $base03 $base01
-client.unfocused        $base01 $base00 $base05 $base01 $base01
-client.urgent           $base08 $base08 $base00 $base08 $base08
-client.placeholder      $base00 $base00 $base05 $base00 $base00
-client.background       $base07
+# Property Name         Border                BG                  Text                  Indicator 
+client.focused          $bg-color             $bg-color           $text-color           $urgent-bg-color
+client.unfocused        $inactive-bg-color    $inactive-bg-color  $inactive-text-color  $urgent-bg-color 
+client.focused_inactive $inactive-bg-color    $inactive-bg-color  $inactive-text-color  $urgent-bg-color
+client.urgent           $urgent-bg-color      $urgent-bg-color    $text-color           $urgent-bg-color
 
-bindsym XF86AudioRaiseVolume exec amixer -q sset Master 5%+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q sset Master 5%- unmute
-bindsym XF86AudioMute exec amixer -q set Master toggle
 
 bindsym $mod+Ctrl+l exec i3lock -c 1d1f21
 
-exec --no-startup-id xsetroot -solid "$base00"
-#exec --no-startup-id compton
+#exec --no-startup-id xsetroot -solid "$base00"
+exec --no-startup-id /usr/libexec/mate-settings-daemon
+exec --no-startup-id compton
 exec --no-startup-id kdeconnect-indicator
 exec --no-startup-id dunst
 exec --no-startup-id redshift -l -33.951:-115.861
+exec feh --bg-scale /usr/share/backgrounds/images/default-16_10.png
+
+
+## Plasma Integration
+# Try to kill the wallpaper set by Plasma (it takes up the entire workspace and hides everythiing)
+
+## Avoid tiling popups, dropdown windows from plasma
+# for the first time, manually resize them, i3 will remember the setting for floating windows
+for_window [class="plasmashell"] floating enable;
+for_window [class="Plasma"] floating enable; border none
+for_window [title="plasma-desktop"] floating enable; border none
+for_window [title="win7"] floating enable; border none
+for_window [class="krunner"] floating enable; border none
+for_window [class="Kmix"] floating enable; border none
+for_window [class="Klipper"] floating enable; border none
+for_window [class="Plasmoidviewer"] floating enable; border none
