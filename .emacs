@@ -11,9 +11,19 @@
 
   (require 'ergoemacs-mode)
   (require 'ergoemacs-status)
-  (setq ergoemacs-theme nil)
-  (setq ergoemacs-keyboard-layout "us")
   (ergoemacs-mode 1)
+;; (require 'evil)
+;; (evil-mode 1)
+
+;;(require 'xah-fly-keys)
+;;(xah-fly-keys-set-layout "qwerty")
+;;(xah-fly-keys 1)
+
+(setq ergoemacs-theme nil)
+(setq ergoemacs-keyboard-layout "us")
+(ergoemacs-mode 1)
+(require 'ergoemacs-status)
+(ergoemacs-status-mode)
 
   (setq TeX-auto-save t)
   (setq TeX-parse-self t)
