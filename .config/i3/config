@@ -4,11 +4,12 @@
 # Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
 #
+set $active-bg-color #3daee9
 set $bg-color #31363b
 set $inactive-bg-color #31363b
 set $text-color #eff0f1
 set $inactive-text-color #7f8c8d
-set $urgent-bg-color #3daee9
+set $urgent-bg-color #e9793d
 
 # i3 config file (v4)
 #
@@ -182,45 +183,48 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-bindsym $mod+r mode "resize"
+bindsym $mod+r mode "RESIZE"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
        status_command i3status
         position top
-        
-    colors {
-        background $bg-color
-        separator  $inactive-text-color
-        statusline $text-color
+        colors {
+         background $bg-color
+         separator  $inactive-text-color
+         statusline $text-color
 
-        # State             Border  BG      Text
-        focused_workspace   $urgent-bg-color $urgent-bg-color $text-color
-        active_workspace    $inactive-bg-color $inactive-bg-color $inactive-text-color
-        inactive_workspace  $inactive-bg-color $inactive-bg-color $inactive-text-color
-        urgent_workspace    $urgent-bg-color $urgent-bg-color $text-color
-        binding_mode        $base00 $base0A $text-color
+         # State             Border             BG                         Text
+         focused_workspace   $active-bg-color   $active-bg-color    $text-color
+         active_workspace    $active-bg-color   $active-bg-color    $text-color
+         inactive_workspace  $inactive-bg-color $inactive-bg-color  $inactive-text-color
+         urgent_workspace    $urgent-bg-color   $urgent-bg-color    $text-color
+         binding_mode        $urgent-bg-color   $urgent-bg-color    $text-color
     }
 }
 
 # Basic color configuration using the Base16 variables for windows and borders.
 # Property Name         Border                BG                  Text                  Indicator 
-client.focused          $bg-color             $bg-color           $text-color           $urgent-bg-color
-client.unfocused        $inactive-bg-color    $inactive-bg-color  $inactive-text-color  $urgent-bg-color 
-client.focused_inactive $inactive-bg-color    $inactive-bg-color  $inactive-text-color  $urgent-bg-color
-client.urgent           $urgent-bg-color      $urgent-bg-color    $text-color           $urgent-bg-color
+client.focused          $bg-color             $bg-color           $text-color           $active-bg-color
+client.unfocused        $inactive-bg-color    $inactive-bg-color  $inactive-text-color  $active-bg-color 
+client.focused_inactive $inactive-bg-color    $inactive-bg-color  $inactive-text-color  $active-bg-color
+client.urgent           $urgent-bg-color      $urgent-bg-color    $text-color           $active-bg-color
 
-
-bindsym $mod+Ctrl+l exec i3lock -c 1d1f21
 
 #exec --no-startup-id xsetroot -solid "$base00"
-exec --no-startup-id /usr/libexec/mate-settings-daemon
+#exec --no-startup-id /usr/libexec/mate-settings-daemon
+exec --no-startup-id xscreensaver
 exec --no-startup-id compton
 exec --no-startup-id kdeconnect-indicator
-exec --no-startup-id dunst
+#exec --no-startup-id dunst
 exec --no-startup-id redshift -l -33.951:-115.861
+exec --no-startup-id nm-applet
 exec feh --bg-scale /usr/share/backgrounds/images/default-16_10.png
+exec --no-startup-id xfsettingsd --sm-client-disable
+exec --no-startup-id /usr/lib64/xfce4/notifyd/xfce4-notifyd
+exec --no-startup-id xfce4-volumed-pulse
+exec --no-startup-id xfce4-power-manager
 
 
 ## Plasma Integration
