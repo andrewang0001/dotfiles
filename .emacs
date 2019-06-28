@@ -54,7 +54,6 @@
   (require 'reftex)
   (menu-bar-mode -1)
   (add-to-list 'load-path "~/.emacs.d/lisp/")
-  (require 'ox-reveal)
 
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t)
