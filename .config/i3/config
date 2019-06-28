@@ -38,9 +38,8 @@ font pango:Sans Serif 10
 floating_modifier $mod
 
 # start a terminal
-#bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec i3-sensible-terminal
 #bindsym $mod+Return exec urxvt256c-ml
-bindsym $mod+Return exec konsole
 # kill focused window
 bindsym $mod+Shift+q kill
 
@@ -215,28 +214,13 @@ client.urgent           $urgent-bg-color      $urgent-bg-color    $text-color   
 #exec --no-startup-id xsetroot -solid "$base00"
 #exec --no-startup-id /usr/libexec/mate-settings-daemon
 exec --no-startup-id xscreensaver
-exec --no-startup-id compton
-exec --no-startup-id kdeconnect-indicator
+#exec --no-startup-id compton
+#exec --no-startup-id kdeconnect-indicator
 #exec --no-startup-id dunst
-exec --no-startup-id redshift -l -33.951:-115.861
+#exec --no-startup-id redshift -l -33.951:-115.861
 exec --no-startup-id nm-applet
-exec feh --bg-scale /usr/share/backgrounds/images/default-16_10.png
+#exec feh --bg-scale /usr/share/backgrounds/images/default-16_10.png
 exec --no-startup-id xfsettingsd --sm-client-disable
 exec --no-startup-id /usr/lib64/xfce4/notifyd/xfce4-notifyd
 exec --no-startup-id xfce4-volumed-pulse
 exec --no-startup-id xfce4-power-manager
-
-
-## Plasma Integration
-# Try to kill the wallpaper set by Plasma (it takes up the entire workspace and hides everythiing)
-
-## Avoid tiling popups, dropdown windows from plasma
-# for the first time, manually resize them, i3 will remember the setting for floating windows
-for_window [class="plasmashell"] floating enable;
-for_window [class="Plasma"] floating enable; border none
-for_window [title="plasma-desktop"] floating enable; border none
-for_window [title="win7"] floating enable; border none
-for_window [class="krunner"] floating enable; border none
-for_window [class="Kmix"] floating enable; border none
-for_window [class="Klipper"] floating enable; border none
-for_window [class="Plasmoidviewer"] floating enable; border none
