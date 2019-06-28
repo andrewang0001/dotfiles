@@ -3,5 +3,5 @@
 (package-initialize)
 
 ;; install all the packages! 
-(setq package-list '(reftex ivy company auctex doom doom-modeline doom-themes))
+(setq package-list '(reftex ivy company auctex doom doom-modeline doom-themes use-package))
 (mapc #'package-install package-list)
